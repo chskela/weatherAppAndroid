@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">weatherAppAndroid</string>
-    <string name="weather_app">Weather App</string>
+    <string name="weather_app">how’s today weather?</string>
+
+    <string name="content_description_media">sun</string>
+    <string name="today_weather">today weather</string>
 </resources>
