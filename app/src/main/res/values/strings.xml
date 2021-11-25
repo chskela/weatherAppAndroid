@@ -4,4 +4,7 @@
 
     <string name="content_description_media">sun</string>
     <string name="today_weather">today weather</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sky_monitor">sky monitor</string>
 </resources>

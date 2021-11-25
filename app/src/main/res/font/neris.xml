@@ -2,8 +2,17 @@
 <font-family xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <font
+        android:font="@font/neris_thin"
         android:fontStyle="normal"
-        android:fontWeight="300"
-        android:font="@font/neris"
-        tools:ignore="ResourceCycle" />
+        android:fontWeight="200" />
+
+    <font
+        android:font="@font/neris_light"
+        android:fontStyle="normal"
+        android:fontWeight="300" />
+
+    <font
+        android:font="@font/neris_semibold"
+        android:fontStyle="normal"
+        android:fontWeight="600" />
 </font-family>
