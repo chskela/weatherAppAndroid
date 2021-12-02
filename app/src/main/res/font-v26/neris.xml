@@ -14,6 +14,6 @@
     <font
         android:font="@font/neris_semibold"
         android:fontStyle="normal"
-        android:fontWeight="600" />
+        android:fontWeight="900" />
 
 </font-family>
