@@ -1,28 +1,21 @@
 package com.chskela.weatherappandroid
 
-import android.view.View
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.chskela.weatherappandroid.network.data.Hourly
+import com.chskela.weatherappandroid.adapters.HourlyAdapter
+import com.chskela.weatherappandroid.viewmodels.UIData
+
 //import coil.load
 
 
-//@BindingAdapter("imageUrl")
-//fun bindImage(imgView: ImageView, imgUrl: String?) {
-//    imgUrl?.let {
-//        val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-//
-//        imgView.load(imgUri) {
-//            placeholder(R.drawable.loading_animation)
-//            error(R.drawable.ic_broken_image)
-//        }
-//    }
-//}
-//
+@BindingAdapter("image")
+fun bindImage(imgView: ImageView, img: Int) {
+    imgView.setImageResource(img)
+}
+
 @BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView, data: List<Hourly>?) {
+fun bindRecyclerView(recyclerView: RecyclerView, data: List<UIData>?) {
     val adapter = recyclerView.adapter as HourlyAdapter
     adapter.submitList(data)
 }

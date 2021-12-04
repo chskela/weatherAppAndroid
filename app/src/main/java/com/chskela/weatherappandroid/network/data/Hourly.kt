@@ -5,6 +5,7 @@ import com.squareup.moshi.Json
 data class Hourly(
     val dt: String,
     val temp: String,
+    val weather: List<Weather>,
 //    @Json(name = "feels_like") val feelsLike: Double,
 //    val pressure: Double,
 //    val humidity: Double,
@@ -18,5 +19,5 @@ data class Hourly(
 //    val pop: Double,
 //    val rain: OneHour?,
 //    val snow: OneHour?,
-    val weather: List<Weather>,
+
 )

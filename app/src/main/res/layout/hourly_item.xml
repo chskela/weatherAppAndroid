@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable
             name="item"
-            type="com.chskela.weatherappandroid.network.data.Hourly" />
+            type="com.chskela.weatherappandroid.viewmodels.UIData" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="14dp"
-        android:paddingRight="14dp"
         android:orientation="vertical"
-        android:paddingBottom="8dp">
-
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/hourly_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/gray"
             android:fontFamily="@font/neris_light"
             android:gravity="center|center_vertical"
             android:text="@{item.dt}"
+            android:textColor="@color/gray"
             android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/hourly_icon"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
             android:layout_marginBottom="16dp"
-            android:scaleType="fitCenter"
+            android:contentDescription="@{item.description}"
             android:gravity="center|center_vertical"
-            app:srcCompat="@drawable/ic__clear_sky_01" />
+            android:scaleType="fitCenter"
+            app:image="@{item.icon}" />
 
         <TextView
-
             android:id="@+id/hourly_temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:textColor="@color/gray"
             android:fontFamily="@font/neris_light"
             android:gravity="center|center_vertical"
             android:text="@{@string/temperature(item.temp)}"
+            android:textColor="@color/gray"
             android:textSize="16sp" />
     </LinearLayout>
-
 
 
 </layout>

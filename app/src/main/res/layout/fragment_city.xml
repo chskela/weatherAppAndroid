@@ -18,7 +18,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/neris_semibold"
-                    android:text="@{viewModel.weather.name}"
+                    android:text="@{viewModel.weatherData.name}"
                     android:textSize="24sp"
                     app:layout_constraintStart_toEndOf="@+id/outlinePlace"
                     app:layout_constraintTop_toTopOf="@+id/outlinePlace" />
@@ -78,6 +78,7 @@
                     android:id="@+id/temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/neris_thin"
                     android:text="@{@string/temperature(viewModel.temp)}"
@@ -91,7 +92,8 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/ic__clear_sky_01"
+                    android:contentDescription="@{viewModel.description}"
+                    app:image="@{viewModel.icon}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -101,10 +103,10 @@
                     android:id="@+id/cloud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/neris_thin"
+                    android:text="@{@string/weather(viewModel.weatherData.weather[0].main, viewModel.weatherData.weather[0].description)}"
                     android:textSize="20sp"
-                    android:text="@{@string/weather(viewModel.weather.weather[0].main, viewModel.weather.weather[0].description)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +116,7 @@
                     style="?attr/materialCardViewFilledStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="24dp"
                     android:clickable="false"
                     android:focusable="true"
                     app:cardCornerRadius="20dp"
@@ -125,16 +127,17 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="210dp"
                         android:background="@color/gray_light"
-                        android:paddingLeft="32dp"
+                        android:paddingLeft="16dp"
                         android:paddingTop="16dp"
-                        android:paddingRight="32dp">
+                        android:paddingRight="16dp">
 
                         <TextView
                             android:id="@+id/hourly"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
                             android:fontFamily="@font/neris_semibold"
                             android:text="@string/hourly"
                             android:textSize="20sp"
@@ -148,9 +151,9 @@
                             android:layout_gravity="center"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginEnd="16dp"
+                            android:layout_marginEnd="8dp"
                             android:orientation="horizontal"
-                            android:paddingBottom="56dp"
+
                             android:scrollbars="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintEnd_toEndOf="parent"

@@ -2,8 +2,8 @@ package com.chskela.weatherappandroid.viewmodels
 
 import android.util.Log
 import androidx.lifecycle.*
+import com.chskela.weatherappandroid.R
 import com.chskela.weatherappandroid.network.WeatherApi
-import com.chskela.weatherappandroid.network.data.Hourly
 import com.chskela.weatherappandroid.network.data.HourlyForecastData
 import com.chskela.weatherappandroid.network.data.WeatherData
 import kotlinx.coroutines.launch
@@ -11,33 +11,48 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.floor
 
-enum class WeatherApiStatus { LOADING, ERROR, DONE }
-
 class CityViewModel : ViewModel() {
     private val _city = MutableLiveData<String>("Moscow")
     val city: LiveData<String> = _city
 
     private val _weather = MutableLiveData<WeatherData>()
-    val weather: LiveData<WeatherData> = _weather
+    val weatherData: LiveData<WeatherData> = _weather
 
     private val _hourlyForecastData = MutableLiveData<HourlyForecastData>()
     private val hourlyForecastData: LiveData<HourlyForecastData> = _hourlyForecastData
 
-    var hourly: LiveData<List<Hourly>> = Transformations.map(hourlyForecastData) {
-        it.hourly.map { i ->
-            i.copy(
-                temp = floor(i.temp.toDouble()).toInt().toString(),
-                dt = SimpleDateFormat("HH:mm", Locale.getDefault()).format(i.dt.toLong() * 1000)
-            )
-        }
+    var hourly: LiveData<List<UIData>> = Transformations.map(hourlyForecastData) {
+        it.hourly.filterIndexed { index, _ -> index % 3 == 0 }
+//            .subList(0, 5)
+            .map { i ->
+                UIData(
+                    temp = floor(i.temp.toDouble()).toInt().toString(),
+                    dt = SimpleDateFormat(
+                        "HH:mm",
+                        Locale.getDefault()
+                    ).format(i.dt.toLong() * 1000),
+                    icon = getDrawableId(i.weather[0].icon),
+                    description = i.weather[0].description
+                )
+            }
     }
 
-    val temp: LiveData<String> = Transformations.map(weather) {
+    val temp: LiveData<String> = Transformations.map(weatherData) {
         floor(it.main.temp).toInt().toString()
     }
 
-    val timeOfDataCalculation: LiveData<String> = Transformations.map(weather) {
-        SimpleDateFormat("HH:mm", Locale.getDefault()).format(it.dt * 1000)
+    val timeOfDataCalculation: LiveData<String> = Transformations.map(weatherData) {
+        SimpleDateFormat("HH:mm", Locale.getDefault()).format(it.dt.toLong() * 1000)
+    }
+
+    val icon: LiveData<Int> = Transformations.map(weatherData) {
+        getDrawableId(it.weather[0].icon)
+    }
+
+    val description: LiveData<String> = Transformations.map(weatherData) {
+        it.weather.map { i ->
+            i.description
+        }[0]
     }
 
     private val _status = MutableLiveData<WeatherApiStatus>()
@@ -54,8 +69,8 @@ class CityViewModel : ViewModel() {
             try {
                 _weather.value = WeatherApi.retrofitService.getWeather("Sochi")
 
-                val lat = weather.value?.coord?.lat ?: 0.0
-                val lon = weather.value?.coord?.lon ?: 0.0
+                val lat = weatherData.value?.coord?.lat ?: 0.0
+                val lon = weatherData.value?.coord?.lon ?: 0.0
                 _hourlyForecastData.value = WeatherApi.retrofitService.getHourlyForecast(
                     lat, lon
                 )
@@ -63,7 +78,7 @@ class CityViewModel : ViewModel() {
                 Log.d("RESULT", "h:___ ${hourly.value.toString()}")
 
                 _status.value = WeatherApiStatus.DONE
-                Log.d("RESULT", weather.value.toString())
+                Log.d("RESULT", weatherData.value.toString())
                 Log.d("STATUS", status.value.toString())
             } catch (e: Exception) {
                 _status.value = WeatherApiStatus.ERROR
@@ -71,5 +86,18 @@ class CityViewModel : ViewModel() {
                 Log.d("ERROR", e.toString())
             }
         }
+    }
+
+    private fun getDrawableId(icon: String) = when (icon) {
+        "01d", "01n" -> R.drawable.ic__clear_sky_01
+        "02d", "02n" -> R.drawable.ic__few_clouds_02
+        "03d", "03n" -> R.drawable.ic__scattered_clouds_03
+        "04d", "04n" -> R.drawable.ic__broken_clouds_04
+        "09d", "09n" -> R.drawable.ic__shower_rain_09
+        "10d", "10n" -> R.drawable.ic__rain_10
+        "11d", "11n" -> R.drawable.ic__thunderstorm_11
+        "13d", "13n" -> R.drawable.ic__snow_13
+        "50d", "50n" -> R.drawable.ic__mist_50
+        else -> R.drawable.ic__clear_sky_01
     }
 }
