@@ -30,11 +30,7 @@ class HourlyAdapter :
     class ViewHolder(val binding: HourlyItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        //        val hourlyTime: TextView = view.findViewById(R.id.hourly_time)
-//        val hourlyIcon: ImageView = view.findViewById(R.id.hourly_icon)
-//        val hourlyTemp: TextView = view.findViewById(R.id.hourly_temp)
         fun bind(hourly: Hourly) {
-//            binding.hourlyTime.text = hourly.temp.toString()
             binding.item = hourly
             binding.executePendingBindings()
         }
@@ -49,34 +45,6 @@ class HourlyAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.bind(getItem(position))
+        holder.bind(getItem(position))
     }
-
-//    override fun getItemCount(): Int = hourlyList.size
-
 }
-
-
-//class HourlyAdapter(private val hourlyList: List<Hourly>) :
-//    RecyclerView.Adapter<HourlyAdapter.ViewHolder>() {
-//
-//    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-//        val hourlyTime: TextView = view.findViewById(R.id.hourly_time)
-//        val hourlyIcon: ImageView = view.findViewById(R.id.hourly_icon)
-//        val hourlyTemp: TextView = view.findViewById(R.id.hourly_temp)
-//
-//    }
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-//        return ViewHolder(
-//            LayoutInflater.from(parent.context).inflate(R.layout.hourly_item, parent, false)
-//        )
-//    }
-//
-//    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        holder.hourlyTime.text = hourlyList[position].temp.toString()
-//    }
-//
-//    override fun getItemCount(): Int = hourlyList.size
-//
-//}

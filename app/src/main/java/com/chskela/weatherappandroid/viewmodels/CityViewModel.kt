@@ -24,7 +24,7 @@ class CityViewModel : ViewModel() {
     private val hourlyForecastData: LiveData<HourlyForecastData> = _hourlyForecastData
 
     var hourly: LiveData<List<Hourly>> = Transformations.map(hourlyForecastData) {
-        it.hourly?.map { i ->
+        it.hourly.map { i ->
             i.copy(
                 temp = floor(i.temp.toDouble()).toInt().toString(),
                 dt = SimpleDateFormat("HH:mm", Locale.getDefault()).format(i.dt.toLong() * 1000)
@@ -33,20 +33,12 @@ class CityViewModel : ViewModel() {
     }
 
     val temp: LiveData<String> = Transformations.map(weather) {
-        it.main.temp.toInt().toString()
+        floor(it.main.temp).toInt().toString()
     }
 
     val timeOfDataCalculation: LiveData<String> = Transformations.map(weather) {
         SimpleDateFormat("HH:mm", Locale.getDefault()).format(it.dt * 1000)
     }
-
-//    private val _hourlyTime = MutableLiveData<Long>()
-//    val hourlyTime: LiveData<String> = Transformations.map(hourly) {
-//        SimpleDateFormat("HH:mm", Locale.getDefault()).format(it.dt * 1000)
-//    }
-//    val hourlyIcon = MutableLiveData<String>()
-//
-//    val hourlyTemp = MutableLiveData<String>()
 
     private val _status = MutableLiveData<WeatherApiStatus>()
     val status: LiveData<WeatherApiStatus> = _status

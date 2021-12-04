@@ -18,7 +18,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
@@ -88,10 +88,10 @@
 
                 <ImageView
                     android:id="@+id/cloudIcon"
-                    android:layout_width="44dp"
-                    android:layout_height="44dp"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_outline_cloud_24"
+                    android:src="@drawable/ic__clear_sky_01"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -101,6 +101,9 @@
                     android:id="@+id/cloud"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/neris_thin"
+                    android:textSize="20sp"
                     android:text="@{@string/weather(viewModel.weather.weather[0].main, viewModel.weather.weather[0].description)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -110,12 +113,14 @@
                 <com.google.android.material.card.MaterialCardView
                     style="?attr/materialCardViewFilledStyle"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="24dp"
-                    android:clickable="true"
+                    android:clickable="false"
                     android:focusable="true"
                     app:cardCornerRadius="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cloud">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -123,7 +128,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/gray_light"
                         android:paddingLeft="32dp"
-                        android:paddingTop="24dp"
+                        android:paddingTop="16dp"
                         android:paddingRight="32dp">
 
                         <TextView
@@ -132,7 +137,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/neris_semibold"
                             android:text="@string/hourly"
-                            android:textSize="24sp"
+                            android:textSize="20sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -141,10 +146,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="16dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             android:orientation="horizontal"
+                            android:paddingBottom="56dp"
                             android:scrollbars="horizontal"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintEnd_toEndOf="parent"

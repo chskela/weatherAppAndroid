@@ -11,8 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:paddingLeft="14dp"
+        android:paddingRight="14dp"
         android:orientation="vertical"
         android:paddingBottom="8dp">
 
@@ -21,27 +21,33 @@
             android:id="@+id/hourly_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/gray"
             android:fontFamily="@font/neris_light"
             android:gravity="center|center_vertical"
             android:text="@{item.dt}"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/hourly_icon"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            app:srcCompat="@drawable/ic_baseline_wb_sunny_24" />-->
+        <ImageView
+            android:id="@+id/hourly_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="fitCenter"
+            android:gravity="center|center_vertical"
+            app:srcCompat="@drawable/ic__clear_sky_01" />
 
         <TextView
+
             android:id="@+id/hourly_temp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+
+            android:textColor="@color/gray"
             android:fontFamily="@font/neris_light"
             android:gravity="center|center_vertical"
             android:text="@{@string/temperature(item.temp)}"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
     </LinearLayout>
 
 

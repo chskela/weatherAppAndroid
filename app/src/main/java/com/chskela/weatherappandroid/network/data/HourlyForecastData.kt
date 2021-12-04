@@ -8,9 +8,9 @@ data class HourlyForecastData(
     val timezone: String,
     @Json(name = "timezone_offset") val timezoneOffset: Int,
     val current: Current, // Current weather data API response
-    val minutely: List<Minutely>?, // Minute forecast weather data API response
-    val hourly: List<Hourly>?, // Hourly forecast weather data API response
-    val daily: List<Daily>?, // Daily forecast weather data API response
+//    val minutely: List<Minutely>, // Minute forecast weather data API response
+    val hourly: List<Hourly>, // Hourly forecast weather data API response
+    val daily: List<Daily>, // Daily forecast weather data API response
 )
 
 

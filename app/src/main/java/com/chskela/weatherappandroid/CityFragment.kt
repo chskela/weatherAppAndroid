@@ -18,24 +18,10 @@ class CityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_city, container, false)
         binding = FragmentCityBinding.inflate(inflater)
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.hourlyList.adapter = HourlyAdapter()
-        Log.d("RESULT", viewModel.weather.value.toString())
         return binding.root
     }
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        binding.hourlyList.adapter = viewModel.hourlyForecastData.value?.hourly?.let {
-//            HourlyAdapter(
-//                it
-//            )
-//        }
-//    }
-
-
 }
