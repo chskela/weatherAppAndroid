@@ -8,7 +8,7 @@ data class WeatherData(
     val visibility: Int,
     val wind: Wind,
     val clouds: Clouds,
-    val dt: String,
+    val dt: Long,
     val sys: Sys,
     val timezone: Int, // Shift in seconds from UTC
     val id: Int, // City ID

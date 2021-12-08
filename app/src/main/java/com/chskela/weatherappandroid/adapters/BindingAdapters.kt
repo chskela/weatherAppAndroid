@@ -1,10 +1,12 @@
 package com.chskela.weatherappandroid
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chskela.weatherappandroid.adapters.HourlyAdapter
 import com.chskela.weatherappandroid.viewmodels.UIData
+import com.chskela.weatherappandroid.viewmodels.WeatherApiStatus
 
 //import coil.load
 
@@ -20,19 +22,31 @@ fun bindRecyclerView(recyclerView: RecyclerView, data: List<UIData>?) {
     adapter.submitList(data)
 }
 
-//@BindingAdapter("marsApiStatus")
-//fun bindStatus(statusImageView: ImageView, status: MarsApiStatus?) {
-//    when(status) {
-//        MarsApiStatus.LOADING -> {
-//            statusImageView.visibility = View.VISIBLE
-//            statusImageView.setImageResource(R.drawable.loading_animation)
-//        }
-//        MarsApiStatus.ERROR -> {
-//            statusImageView.visibility = View.VISIBLE
-//            statusImageView.setImageResource(R.drawable.ic_connection_error)
-//        }
-//        MarsApiStatus.DONE -> {
-//            statusImageView.visibility = View.GONE
-//        }
-//    }
-//}
+@BindingAdapter("status")
+fun bindStatus(view: View, status: WeatherApiStatus) {
+    when(status) {
+        WeatherApiStatus.LOADING -> {
+            view.visibility = View.INVISIBLE
+        }
+        WeatherApiStatus.ERROR -> {
+            view.visibility = View.INVISIBLE
+        }
+        WeatherApiStatus.DONE -> {
+            view.visibility = View.VISIBLE
+        }
+    }
+}
+@BindingAdapter("spinnerStatus")
+fun bindSpinnerStatus(view: View, status: WeatherApiStatus) {
+    when(status) {
+        WeatherApiStatus.LOADING -> {
+            view.visibility = View.VISIBLE
+        }
+        WeatherApiStatus.ERROR -> {
+            view.visibility = View.VISIBLE
+        }
+        WeatherApiStatus.DONE -> {
+            view.visibility = View.INVISIBLE
+        }
+    }
+}

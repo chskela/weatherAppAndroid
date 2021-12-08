@@ -7,4 +7,5 @@
     <string name="temperature">%1$s\u00B0</string>
     <string name="weather">%1$s - %2$s</string>
     <string name="hourly">hourly</string>
+    <string name="daily">daily</string>
 </resources>

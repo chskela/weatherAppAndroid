@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.chskela.weatherappandroid.R
 import com.chskela.weatherappandroid.network.WeatherApi
-import com.chskela.weatherappandroid.network.data.HourlyForecastData
+import com.chskela.weatherappandroid.network.data.ForecastWeatherData
 import com.chskela.weatherappandroid.network.data.WeatherData
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -18,23 +18,49 @@ class CityViewModel : ViewModel() {
     private val _weather = MutableLiveData<WeatherData>()
     val weatherData: LiveData<WeatherData> = _weather
 
-    private val _hourlyForecastData = MutableLiveData<HourlyForecastData>()
-    private val hourlyForecastData: LiveData<HourlyForecastData> = _hourlyForecastData
+    private val _forecastWeatherData = MutableLiveData<ForecastWeatherData>()
+    private val forecastWeatherData: LiveData<ForecastWeatherData> = _forecastWeatherData
 
-    var hourly: LiveData<List<UIData>> = Transformations.map(hourlyForecastData) {
-        it.hourly.filterIndexed { index, _ -> index % 3 == 0 }
+    var hourly: LiveData<List<UIData>> = Transformations.map(forecastWeatherData) {
+        it.hourly
+            .drop(1)
+            .filterIndexed { index, _ -> index % 3 == 0 }
 //            .subList(0, 5)
             .map { i ->
                 UIData(
-                    temp = floor(i.temp.toDouble()).toInt().toString(),
+                    temp = floor(i.temp).toInt().toString(),
                     dt = SimpleDateFormat(
                         "HH:mm",
                         Locale.getDefault()
-                    ).format(i.dt.toLong() * 1000),
+                    ).format(i.dt * 1000),
                     icon = getDrawableId(i.weather[0].icon),
                     description = i.weather[0].description
                 )
             }
+    }
+    var daily: LiveData<List<UIData>> = Transformations.map(forecastWeatherData) {
+        it.daily
+            .drop(1)
+            .map { i ->
+                UIData(
+                    temp = floor(i.temp.day).toInt().toString(),
+                    dt = SimpleDateFormat(
+                        "dd.MM",
+                        Locale.getDefault()
+                    ).format(i.dt * 1000),
+                    icon = getDrawableId(i.weather[0].icon),
+                    description = i.weather[0].description
+                )
+            }
+    }
+
+    val current: LiveData<UIData> = Transformations.map(weatherData) {
+        UIData(
+            temp =  floor(it.main.temp).toInt().toString(),
+            dt = SimpleDateFormat("HH:mm", Locale.getDefault()).format(it.dt * 1000),
+            icon = getDrawableId(it.weather[0].icon),
+            description = it.weather[0].description
+        )
     }
 
     val temp: LiveData<String> = Transformations.map(weatherData) {
@@ -71,11 +97,11 @@ class CityViewModel : ViewModel() {
 
                 val lat = weatherData.value?.coord?.lat ?: 0.0
                 val lon = weatherData.value?.coord?.lon ?: 0.0
-                _hourlyForecastData.value = WeatherApi.retrofitService.getHourlyForecast(
+                _forecastWeatherData.value = WeatherApi.retrofitService.getForecastWeatherData(
                     lat, lon
                 )
 
-                Log.d("RESULT", "h:___ ${hourly.value.toString()}")
+                Log.d("RESULT", "h:___ ${daily.value.toString()}")
 
                 _status.value = WeatherApiStatus.DONE
                 Log.d("RESULT", weatherData.value.toString())

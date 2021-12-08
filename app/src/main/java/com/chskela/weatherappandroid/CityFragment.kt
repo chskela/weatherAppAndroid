@@ -1,12 +1,12 @@
 package com.chskela.weatherappandroid
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import com.chskela.weatherappandroid.adapters.HourlyAdapter
 import com.chskela.weatherappandroid.databinding.FragmentCityBinding
 import com.chskela.weatherappandroid.viewmodels.CityViewModel
 
@@ -22,6 +22,7 @@ class CityFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         binding.hourlyList.adapter = HourlyAdapter()
+        binding.dailyList.adapter = HourlyAdapter()
         return binding.root
     }
 }

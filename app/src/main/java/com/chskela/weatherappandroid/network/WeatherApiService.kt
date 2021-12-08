@@ -1,6 +1,6 @@
 package com.chskela.weatherappandroid.network
 
-import com.chskela.weatherappandroid.network.data.HourlyForecastData
+import com.chskela.weatherappandroid.network.data.ForecastWeatherData
 import com.chskela.weatherappandroid.network.data.WeatherData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -30,13 +30,13 @@ interface WeatherApiService {
     ): WeatherData
 
     @GET("data/2.5/onecall")
-    suspend fun getHourlyForecast(
+    suspend fun getForecastWeatherData(
         @Query("lat") lat: Double,
         @Query("lon") lon: Double,
         @Query("units") units: String = "metric",
         @Query("exclude") exclude: String = "minutely",
         @Query("appid") appid: String = API_KEY
-    ): HourlyForecastData
+    ): ForecastWeatherData
 }
 
 object WeatherApi {

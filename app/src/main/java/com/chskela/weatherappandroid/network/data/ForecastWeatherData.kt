@@ -2,7 +2,7 @@ package com.chskela.weatherappandroid.network.data
 
 import com.squareup.moshi.Json
 
-data class HourlyForecastData(
+data class ForecastWeatherData(
     val lon: Double, // City geo location, longitude
     val lat: Double, //  City geo location, latitude
     val timezone: String,
