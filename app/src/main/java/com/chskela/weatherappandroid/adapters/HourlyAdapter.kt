@@ -12,14 +12,16 @@ import com.chskela.weatherappandroid.viewmodels.UIData
 class HourlyAdapter :
     ListAdapter<UIData, HourlyAdapter.ViewHolder>(DiffCallback) {
 
-    companion object DiffCallback : DiffUtil.ItemCallback<UIData>() {
+    companion object {
+        private val DiffCallback = object : DiffUtil.ItemCallback<UIData>(){
 
-        override fun areItemsTheSame(oldItem: UIData, newItem: UIData): Boolean {
-            return oldItem.dt == newItem.dt
-        }
+            override fun areItemsTheSame(oldItem: UIData, newItem: UIData): Boolean {
+                return oldItem.dt == newItem.dt
+            }
 
-        override fun areContentsTheSame(oldItem: UIData, newItem: UIData): Boolean {
-            return oldItem.temp == newItem.temp
+            override fun areContentsTheSame(oldItem: UIData, newItem: UIData): Boolean {
+                return oldItem == newItem
+            }
         }
     }
 
@@ -36,7 +38,7 @@ class HourlyAdapter :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             HourlyItemBinding.inflate(
-                LayoutInflater.from(parent.context)
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }
