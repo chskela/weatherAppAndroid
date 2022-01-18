@@ -1,5 +1,6 @@
 package com.chskela.weatherappandroid
 
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -38,6 +39,7 @@ fun bindStatus(view: View, status: WeatherApiStatus) {
 }
 @BindingAdapter("spinnerStatus")
 fun bindSpinnerStatus(view: View, status: WeatherApiStatus) {
+    Log.w("RESULT", "status: $status")
     when(status) {
         WeatherApiStatus.LOADING -> {
             view.visibility = View.VISIBLE

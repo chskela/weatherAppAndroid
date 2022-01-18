@@ -30,7 +30,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:paddingBottom="20dp">
 
                     <ImageView
@@ -52,10 +52,10 @@
                         android:layout_marginStart="32dp"
                         android:layout_marginTop="32dp"
                         android:scaleType="fitCenter"
-                        app:status="@{viewModel.status}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/line"
                         app:srcCompat="@drawable/ic_outline_place_24"
+                        app:status="@{viewModel.status}"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -66,9 +66,9 @@
                         android:fontFamily="@font/neris_semibold"
                         android:text="@{viewModel.weatherData.name}"
                         android:textSize="24sp"
-                        app:status="@{viewModel.status}"
                         app:layout_constraintStart_toEndOf="@+id/outlinePlace"
-                        app:layout_constraintTop_toTopOf="@+id/outlinePlace" />
+                        app:layout_constraintTop_toTopOf="@+id/outlinePlace"
+                        app:status="@{viewModel.status}" />
 
                     <TextView
                         android:id="@+id/time"
@@ -77,9 +77,9 @@
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/neris_semibold"
                         android:text="@{viewModel.current.dt}"
-                        app:status="@{viewModel.status}"
                         app:layout_constraintStart_toEndOf="@+id/outlinePlace"
-                        app:layout_constraintTop_toBottomOf="@+id/location" />
+                        app:layout_constraintTop_toBottomOf="@+id/location"
+                        app:status="@{viewModel.status}" />
 
                     <TextView
                         android:id="@+id/temperature"
@@ -90,10 +90,10 @@
                         android:fontFamily="@font/neris_thin"
                         android:text="@{@string/temperature(viewModel.current.temp)}"
                         android:textSize="54sp"
-                        app:status="@{viewModel.status}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/time" />
+                        app:layout_constraintTop_toBottomOf="@+id/time"
+                        app:status="@{viewModel.status}" />
 
                     <ImageView
                         android:id="@+id/cloudIcon"
@@ -105,8 +105,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:status="@{viewModel.status}"
-                        app:layout_constraintTop_toBottomOf="@+id/temperature" />
+                        app:layout_constraintTop_toBottomOf="@+id/temperature"
+                        app:status="@{viewModel.status}" />
 
                     <TextView
                         android:id="@+id/cloud"
@@ -117,21 +117,21 @@
                         android:gravity="center"
                         android:text="@{@string/weather(viewModel.weatherData.weather[0].main, viewModel.current.description)}"
                         android:textSize="20sp"
-                        app:status="@{viewModel.status}"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cloudIcon" />
+                        app:layout_constraintTop_toBottomOf="@+id/cloudIcon"
+                        app:status="@{viewModel.status}" />
 
                     <com.google.android.material.progressindicator.CircularProgressIndicator
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:indeterminate="true"
-                        app:spinnerStatus="@{viewModel.status}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:spinnerStatus="@{viewModel.status}" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.card.MaterialCardView
