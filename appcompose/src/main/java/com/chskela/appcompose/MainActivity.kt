@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.chskela.appcompose.screens.SplashScreen
 import com.chskela.appcompose.ui.theme.WeatherAppAndroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,12 +18,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherAppAndroidTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
+                Surface {
+                    App()
                 }
             }
         }
@@ -30,14 +27,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    WeatherAppAndroidTheme {
-        Greeting("Android")
-    }
+fun App() {
+    SplashScreen()
 }

@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">appCompose</string>
+    <string name="app_name">weatherAppAndroid</string>
+
+<!--    splashscreen-->
+    <string name="hows_today_weather">how’s today weather?</string>
+    <string name="today_weather">today weather</string>
 </resources>
