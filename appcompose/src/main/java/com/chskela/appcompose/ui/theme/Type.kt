@@ -33,7 +33,6 @@ private val Neris = FontFamily(
     Font(R.font.neris_thin, FontWeight.W200),
     Font(R.font.neris_light,  FontWeight.W300),
     Font(R.font.neris_semibold, FontWeight.W900),
-
 )
 
 val Typography = Typography(
@@ -42,11 +41,11 @@ val Typography = Typography(
         fontWeight = FontWeight.W300,
         fontSize = 34.sp
     ),
-    h5 = TextStyle(
-        fontFamily = Neris,
-        fontWeight = FontWeight.W300,
-        fontSize = 24.sp
-    ),
+//    h5 = TextStyle(
+//        fontFamily = Neris,
+//        fontWeight = FontWeight.W300,
+//        fontSize = 24.sp
+//    ),
 //    h6 = TextStyle(
 //        fontFamily = Montserrat,
 //        fontWeight = FontWeight.W600,
@@ -71,11 +70,11 @@ val Typography = Typography(
 //        fontFamily = Montserrat,
 //        fontSize = 14.sp
 //    ),
-//    button = TextStyle(
-//        fontFamily = Montserrat,
-//        fontWeight = FontWeight.W500,
-//        fontSize = 14.sp
-//    ),
+    button = TextStyle(
+        fontFamily = Neris,
+        fontWeight = FontWeight.W300,
+        fontSize = 24.sp
+    ),
 //    caption = TextStyle(
 //        fontFamily = Montserrat,
 //        fontWeight = FontWeight.Normal,

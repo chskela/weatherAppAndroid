@@ -59,7 +59,6 @@ fun SplashScreen() {
                     ) {
                         Text(
                             text = stringResource(id = R.string.today_weather),
-                            style = MaterialTheme.typography.h5
                         )
                     }
                 }
