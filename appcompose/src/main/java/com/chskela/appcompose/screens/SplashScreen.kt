@@ -51,8 +51,6 @@ fun SplashScreen() {
                 ) {
                     Button(
                         onClick = { /*TODO*/ },
-                        modifier = Modifier
-                            .clip(shape = RoundedCornerShape(50)),
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = MaterialTheme.colors.primary
                         )
@@ -69,6 +67,6 @@ fun SplashScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+fun SplashScreenPreview() {
     SplashScreen()
 }

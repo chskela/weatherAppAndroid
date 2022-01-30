@@ -1,7 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">weatherAppAndroid</string>
 
 <!--    splashscreen-->
     <string name="hows_today_weather">how’s today weather?</string>
     <string name="today_weather">today weather</string>
+
+<!--    mainscreen-->
+    <string name="sky_monitor">sky monitor</string>
 </resources>
