@@ -4,19 +4,13 @@ package com.chskela.appcompose.screens
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.sharp.Menu
-import androidx.compose.material3.CenterAlignedTopAppBar
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material3.TopAppBarColors
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.outlined.Person
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.chskela.appcompose.R
 import com.chskela.appcompose.ui.theme.WeatherAppAndroidTheme
 
@@ -25,10 +19,34 @@ fun MainScreen() {
     WeatherAppAndroidTheme {
         Scaffold(topBar = {
             CenterAlignedTopAppBar(
-            title = { stringResource(id = R.string.sky_monitor) },
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.sky_monitor),
+                        color= MaterialTheme.colorScheme.onPrimary,
+                        style = MaterialTheme.typography.titleLarge
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = { /* doSomething() */ }) {
+                        Icon(
+                            imageVector = Icons.Filled.Menu,
+                            contentDescription = "menu",
+                            tint = MaterialTheme.colorScheme.onPrimary,
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colors.primary
-                )
+                    containerColor = MaterialTheme.colorScheme.primary,
+                ),
+                actions = {
+                    IconButton(onClick = { /* doSomething() */ }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Person,
+                            contentDescription = "person",
+                            tint = MaterialTheme.colorScheme.onPrimary,
+                        )
+                    }
+                },
             )
         }) {
 

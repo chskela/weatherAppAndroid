@@ -3,7 +3,8 @@ package com.chskela.appcompose.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material3.*
+//import androidx.compose.material3.Button as Button3
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,8 +34,8 @@ fun SplashScreen() {
                     modifier = Modifier
                         .padding(top = 16.dp),
                     text = stringResource(id = R.string.hows_today_weather),
-                    style = MaterialTheme.typography.h4,
-                    color = MaterialTheme.colors.primary
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
                 Image(
                     modifier = Modifier
@@ -52,11 +53,12 @@ fun SplashScreen() {
                     Button(
                         onClick = { /*TODO*/ },
                         colors = ButtonDefaults.buttonColors(
-                            backgroundColor = MaterialTheme.colors.primary
+                            containerColor = MaterialTheme.colorScheme.primary
                         )
                     ) {
                         Text(
                             text = stringResource(id = R.string.today_weather),
+                            style = MaterialTheme.typography.labelLarge
                         )
                     }
                 }
