@@ -44,7 +44,7 @@ fun WACard(title: String = "hourly") {
             color = MaterialTheme.colorScheme.primary
         )
         LazyRow(state = scrollState) {
-            items(listOf<UIData>()) { item: UIData ->
+            items(listOf<UIData>()) { item ->
                 Column() {
                     Text(text = item.dt)
                     Icon(
