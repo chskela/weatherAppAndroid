@@ -1,6 +1,7 @@
 package com.chskela.appcompose.screens
 
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
@@ -12,6 +13,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.chskela.appcompose.R
+import com.chskela.appcompose.data.UIData
+import com.chskela.appcompose.ui.components.WACard
 import com.chskela.appcompose.ui.theme.WeatherAppAndroidTheme
 
 @Composable
@@ -49,7 +52,29 @@ fun MainScreen() {
                 },
             )
         }) {
-
+            Column() {
+                val uiData = UIData("10", "20:00", R.drawable.ic__clear_sky_01, "sky")
+                WACard(
+                    list = listOf(
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData,
+                        uiData.copy(temp = "12")
+                    ))
+            }
         }
     }
 }

@@ -15,7 +15,8 @@ private val DarkColorPalette = darkColorScheme(
 private val LightColorPalette = lightColorScheme(
     primary = Gray,
     onPrimary = Color.White,
-    surface = GrayLight
+    primaryContainer = GrayLight,
+    onPrimaryContainer = Gray
 
     /* Other default colors to override
     background = Color.White,
@@ -39,7 +40,8 @@ fun WeatherAppAndroidTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+//        colorScheme = colorScheme,
+        colorScheme = LightColorPalette,
         typography = Typography,
 //        shapes = Shapes,
         content = content
