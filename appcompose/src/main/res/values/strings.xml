@@ -7,4 +7,7 @@
 
 <!--    mainscreen-->
     <string name="sky_monitor">sky monitor</string>
+
+    <string name="hourly">hourly</string>
+    <string name="daily">daily</string>
 </resources>
