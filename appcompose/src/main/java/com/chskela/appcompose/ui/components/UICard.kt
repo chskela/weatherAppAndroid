@@ -30,29 +30,25 @@ fun UICard(title: String = "hourly", list: List<UIData>) {
     val scrollState = rememberLazyListState()
     Column(
         modifier = Modifier
-            .clip(RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(16.dp))
             .shadow(3.dp)
             .background(color = MaterialTheme.colorScheme.primaryContainer)
             .padding(vertical = 16.dp)
             .fillMaxWidth()
     ) {
-        Text(
+        UIText(
             text = title,
             style = MaterialTheme.typography.titleMedium,
-            color = MaterialTheme.colorScheme.primary,
-            modifier =Modifier.padding(horizontal = 16.dp)
+            modifier = Modifier.padding(horizontal = 16.dp)
         )
         LazyRow(state = scrollState) {
             items(list) { item ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.padding(vertical = 16.dp, horizontal = 10.dp)
+                    modifier = Modifier.padding(top = 16.dp, start = 16.dp, bottom = 16.dp)
                 ) {
                     // time
-                    Text(
-                        text = item.dt,
-                        color = MaterialTheme.colorScheme.primary
-                    )
+                    UIText(text = item.dt)
                     // weather icon
                     UIIcon(
                         imageVector = ImageVector.vectorResource(id = item.icon),
@@ -62,10 +58,7 @@ fun UICard(title: String = "hourly", list: List<UIData>) {
                             .size(36.dp),
                     )
                     // temperature
-                    Text(
-                        text = "${item.temp}\u00B0",
-                        color = MaterialTheme.colorScheme.primary
-                    )
+                    UIText(text = "${item.temp}\u00B0")
                 }
             }
         }
@@ -75,7 +68,7 @@ fun UICard(title: String = "hourly", list: List<UIData>) {
 
 @Preview(showBackground = true)
 @Composable
-fun WACardPreview() {
+fun CardPreview() {
     WeatherAppAndroidTheme {
         val uiData = UIData("10", "20:00", R.drawable.ic__clear_sky_01, "sky")
         UICard(

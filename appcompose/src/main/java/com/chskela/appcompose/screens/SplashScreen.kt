@@ -14,6 +14,7 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.chskela.appcompose.R
+import com.chskela.appcompose.ui.components.UIText
 import com.chskela.appcompose.ui.theme.WeatherAppAndroidTheme
 
 @Composable
@@ -28,12 +29,11 @@ fun SplashScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(
+                UIText(
                     modifier = Modifier
                         .padding(top = 16.dp),
                     text = stringResource(id = R.string.hows_today_weather),
                     style = MaterialTheme.typography.headlineMedium,
-                    color = MaterialTheme.colorScheme.primary
                 )
                 Image(
                     modifier = Modifier

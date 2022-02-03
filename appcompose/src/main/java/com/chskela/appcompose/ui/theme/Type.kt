@@ -36,16 +36,28 @@ private val Neris = FontFamily(
 )
 
 val Typography = Typography(
-    titleMedium = TextStyle(
+    displayLarge = TextStyle(
         fontFamily = Neris,
-        fontWeight = FontWeight.W900,
-        fontSize = 20.sp
+        fontWeight = FontWeight.W300,
+        fontSize = 54.sp
     ),
     titleLarge = TextStyle(
         fontFamily = Neris,
         fontWeight = FontWeight.W900,
         fontSize = 24.sp
     ),
+    titleMedium = TextStyle(
+        fontFamily = Neris,
+        fontWeight = FontWeight.W900,
+        fontSize = 20.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily = Neris,
+        fontWeight = FontWeight.W900,
+        fontSize = 16.sp
+    ),
+
+
 //    h5 = TextStyle(
 //        fontFamily = Neris,
 //        fontWeight = FontWeight.W300,
@@ -62,5 +74,9 @@ val Typography = Typography(
         fontWeight = FontWeight.W300,
         fontSize = 24.sp
     ),
-
+    labelMedium = TextStyle(
+        fontFamily = Neris,
+        fontWeight = FontWeight.W300,
+        fontSize = 20.sp
+    ),
 )
