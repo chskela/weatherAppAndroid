@@ -1,7 +1,6 @@
 package com.chskela.appcompose.ui.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -9,9 +8,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,7 +26,7 @@ import com.chskela.appcompose.data.UIData
 import com.chskela.appcompose.ui.theme.WeatherAppAndroidTheme
 
 @Composable
-fun WACard(title: String = "hourly", list: List<UIData>) {
+fun UICard(title: String = "hourly", list: List<UIData>) {
     val scrollState = rememberLazyListState()
     Column(
         modifier = Modifier
@@ -57,13 +54,12 @@ fun WACard(title: String = "hourly", list: List<UIData>) {
                         color = MaterialTheme.colorScheme.primary
                     )
                     // weather icon
-                    Icon(
+                    UIIcon(
                         imageVector = ImageVector.vectorResource(id = item.icon),
                         contentDescription = item.description,
                         modifier = Modifier
                             .padding(horizontal = 4.dp, vertical = 16.dp)
                             .size(36.dp),
-                        tint = MaterialTheme.colorScheme.primary
                     )
                     // temperature
                     Text(
@@ -82,10 +78,8 @@ fun WACard(title: String = "hourly", list: List<UIData>) {
 fun WACardPreview() {
     WeatherAppAndroidTheme {
         val uiData = UIData("10", "20:00", R.drawable.ic__clear_sky_01, "sky")
-        WACard(
+        UICard(
             list = listOf(
-                uiData,
-                uiData,
                 uiData,
                 uiData,
                 uiData,
